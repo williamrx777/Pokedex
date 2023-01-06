@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET','POST'])
 def index():
     if request.method == 'POST':
-        nome = request.form['nome']
+        nome = request.form['nome'].lower()
         return redirect(url_for('pokedex', nome=nome))
     else:    
         return render_template('index.html')
