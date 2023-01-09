@@ -10,7 +10,7 @@ def index():
     return render_template('index.html')
 @app.route('/buscar', methods=['GET','POST'])
 def pokedex():        
-    pokedex = Pokedex(request.form['nome'],"")
+    pokedex = Pokedex(request.form['nome'].lower(),"")
     try:
         res = json.loads(requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokedex.nome}").text)
         resposta = res['sprites']
