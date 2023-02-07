@@ -12,7 +12,7 @@ def index():
 def pokedex():        
     pokedex = Pokedex(request.form['nome'],['foto'],['moves'],['habilidade1'],['habilidade2'])
     try:
-        res = json.loads(requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokedex.nome}").text)
+        res = json.loads(requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokedex.nome}".lower()).text)
         resposta = res['sprites']['front_default']
         moves = res['moves'][0]['move']['name']
         habilidade1 = res['abilities'][0]['ability']['name']
